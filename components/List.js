@@ -8,14 +8,32 @@ export default class List extends React.Component {
   }
 
   shouldComponentUpdate(newProps) {
-    return this.props.content !== newProps.content || this.props.filter !== newProps.filter;
+    return this.props.content !== newProps.content ||
+           this.props.filter !== newProps.filter ||
+           this.props.filterEcological !== newProps.filterEcological ||
+           this.props.filterKosher !== newProps.filterKosher ||
+           this.props.filterEthical !== newProps.filterEthical;
   }
 
   render() {
     const filterStr = this.props.filter.trim();
     const regex     = new RegExp(filterStr, 'i');
 
+    const self = this;
+
     const filtered = this.props.content.filter(entry => {
+      if (self.props.filterEcological && !entry.ecological) {
+        return false;
+      }
+
+      if (self.props.filterKosher && !entry.kosher) {
+        return false;
+      }
+
+      if (self.props.filterEthical && !entry.ethical) {
+        return false;
+      }
+
       return regex.test(entry.name);
     });
 
