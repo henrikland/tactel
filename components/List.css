@@ -1,4 +1,8 @@
 div.list {
-    float: left;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 600px;
+    overflow: scroll;
     font-size: 30px;
 }

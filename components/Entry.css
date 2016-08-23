@@ -1,3 +1,4 @@
 div.entry {
-    border: 1px dashed green;
+    border-left: 5px solid rgba(100, 100, 100, 0.5);
+    cursor: pointer;
 }
