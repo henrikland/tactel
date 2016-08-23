@@ -8,10 +8,17 @@ export default class List extends React.Component {
   }
 
   render() {
+    const filterStr = this.props.filter.trim();
+    const regex     = new RegExp(filterStr, 'i');
+
+    const filtered = this.props.content.filter(entry => {
+      return regex.test(entry.name + ' ' + entry.description);
+    });
+
     return (
       <div className="list">
         {
-          this.props.content.map(entry =>
+          filtered.map(entry =>
             <Entry
               key={entry.name}
               data={entry}

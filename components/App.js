@@ -11,7 +11,8 @@ export default class App extends React.Component {
 
     this.state = {
       content: [],
-      currentEntry: null
+      currentEntry: null,
+      searchString: ''
     };
   }
 
@@ -30,7 +31,9 @@ export default class App extends React.Component {
   }
 
   onUpdateSearchField(ev) {
-    console.log(ev.target.value);
+    this.setState({
+      searchString: ev.target.value
+    });
   }
 
   onSelectListEntry(entry) {
@@ -46,6 +49,7 @@ export default class App extends React.Component {
         <Info entry={this.state.currentEntry} />
         <List
           content={this.state.content}
+          filter={this.state.searchString}
           onSelect={this.onSelectListEntry.bind(this)}
         />
       </div>
