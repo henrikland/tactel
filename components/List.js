@@ -16,7 +16,7 @@ export default class List extends React.Component {
     const regex     = new RegExp(filterStr, 'i');
 
     const filtered = this.props.content.filter(entry => {
-      return regex.test(entry.Namn);
+      return regex.test(entry.name);
     });
 
     return (
@@ -24,7 +24,7 @@ export default class List extends React.Component {
         {
           filtered.map(entry =>
             <Entry
-              key={entry.Artikelid[0]}
+              key={entry.id}
               data={entry}
               onSelect={this.onSelect.bind(this)}
             />

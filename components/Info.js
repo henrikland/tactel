@@ -3,11 +3,9 @@ import './Info.css';
 
 export default class Info extends React.Component {
   calculateApk() {
-    const pct   = parseFloat(this.props.entry.Alkoholhalt[0]) / 100;
-    const vol   = parseFloat(this.props.entry.Volymiml[0]) / 10;
-    const price = parseFloat(this.props.entry.Prisinklmoms[0]);
+    const entry = this.props.entry;
 
-    return (price / (pct * vol)).toFixed(2);
+    return (entry.price / ((entry.alcoholPercent / 100) * (entry.volumeMl / 10))).toFixed(2);
   }
 
   shouldComponentUpdate(newProps) {
@@ -19,8 +17,8 @@ export default class Info extends React.Component {
       <div className="info">
         {this.props.entry &&
           <div>
-            <div className="info-name">{this.props.entry.Namn[0]}</div>
-            <div className="info-price">{this.props.entry.Prisinklmoms[0]} kr inklusive moms</div>
+            <div className="info-name">{this.props.entry.name}</div>
+            <div className="info-price">{this.props.entry.price} kr inklusive moms</div>
             <div className="info-apk">
               Alkohol per krona: {this.calculateApk()} kronor per centiliter ren sprit.
             </div>

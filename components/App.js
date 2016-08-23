@@ -1,6 +1,7 @@
 import '../vendor/react.js';
 import List from './List.js';
 import Info from './Info.js';
+import Article from './Article.js';
 import request from '../services/http.js';
 import config from '../config/config.js';
 import './App.css';
@@ -21,7 +22,9 @@ export default class App extends React.Component {
   }
 
   onReceivedContent(content) {
-    this.updateContent(content.artiklar.artikel);
+    this.updateContent(content.artiklar.artikel.map(obj => {
+      return new Article(obj);
+    }));
   }
 
   updateContent(newContent) {

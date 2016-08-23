@@ -9,7 +9,7 @@ export default class Entry extends React.Component {
   render() {
     return (
       <div className="entry" onClick={this.onClick.bind(this)}>
-        {this.props.data.Namn[0]}
+        {this.props.data.name}
       </div>
     );
   }
