@@ -24,7 +24,7 @@ export default class List extends React.Component {
         {
           filtered.map(entry =>
             <Entry
-              key={entry.Artikelid}
+              key={entry.Artikelid[0]}
               data={entry}
               onSelect={this.onSelect.bind(this)}
             />
