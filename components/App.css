@@ -1,0 +1,13 @@
+div.app {
+
+}
+
+div.search {
+    font-style: bold;
+    font-size: 20px;
+}
+
+input {
+    height: 30px;
+    width: 300px;
+}

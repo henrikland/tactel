@@ -3,6 +3,7 @@ import List from './List.js';
 import Info from './Info.js';
 import request from '../services/http.js';
 import config from '../config/config.js';
+import './App.css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -44,7 +45,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <input type="text" onChange={this.onUpdateSearchField.bind(this)} ></input>
+        <div className="search">
+          Sök:
+          <input type="text" onChange={this.onUpdateSearchField.bind(this)} ></input>
+        </div>
         <Info entry={this.state.currentEntry} />
         <List
           content={this.state.content}
