@@ -12,7 +12,7 @@ export default class List extends React.Component {
     const regex     = new RegExp(filterStr, 'i');
 
     const filtered = this.props.content.filter(entry => {
-      return regex.test(entry.name + ' ' + entry.description);
+      return regex.test(entry.Namn);
     });
 
     return (
@@ -20,7 +20,7 @@ export default class List extends React.Component {
         {
           filtered.map(entry =>
             <Entry
-              key={entry.name}
+              key={entry.Artikelid}
               data={entry}
               onSelect={this.onSelect.bind(this)}
             />
