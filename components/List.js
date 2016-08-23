@@ -7,6 +7,10 @@ export default class List extends React.Component {
     this.props.onSelect(entry);
   }
 
+  shouldComponentUpdate(newProps) {
+    return this.props.content !== newProps.content || this.props.filter !== newProps.filter;
+  }
+
   render() {
     const filterStr = this.props.filter.trim();
     const regex     = new RegExp(filterStr, 'i');
