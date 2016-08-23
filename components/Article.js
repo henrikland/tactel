@@ -6,5 +6,9 @@ export default class Article {
 
     this.volumeMl = parseFloat(data.Volymiml[0]);
     this.alcoholPercent = parseFloat(data.Alkoholhalt[0]);
+
+    this.ecological = data.Ekologisk[0] === '1';
+    this.kosher     = data.Koscher[0] === '1';
+    this.ethical    = data.Etiskt[0] === '1';
   }
 }
