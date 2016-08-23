@@ -5,12 +5,12 @@ Tactel work assignment
 
 ```sh
 $ npm install
-$ npm install webpack-dev-server -g
 ```
 
 ### Run
 
 ```sh
-$ webpack-dev-server
+$ webpack -w
+$ node server.js
 $ open http://localhost:8080
 ```
