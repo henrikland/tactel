@@ -22,6 +22,18 @@ export default class Info extends React.Component {
             <div className="info-apk">
               Alkohol per krona: {this.calculateApk()} kronor per centiliter ren sprit.
             </div>
+            {
+              this.props.entry.ecological &&
+              <img src="assets/leaf.jpg" title="Eco!"/>
+            }
+            {
+              this.props.entry.kosher &&
+              <img src="assets/david.png" title="Kosher!"/>
+            }
+            {
+              this.props.entry.ethical &&
+              <img src="assets/heart.png" title="Good!"/>
+            }
           </div>
         }
       </div>
