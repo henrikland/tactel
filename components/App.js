@@ -1,9 +1,8 @@
 import '../vendor/react.js';
 import List from './List.js';
 import Info from './Info.js';
-import request from './http.js';
-
-const SYSTEMET = 'http://www.systembolaget.se/api/assortment/products/xml';
+import request from '../services/http.js';
+import config from '../config/config.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,11 +16,11 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    request(SYSTEMET, 'GET', this.onReceivedStuff.bind(this));
+    request(config.URL, 'GET', this.onReceivedContent.bind(this));
   }
 
-  onReceivedStuff(stuff) {
-    this.updateContent(stuff.result);
+  onReceivedContent(content) {
+    this.updateContent(content.artiklar.artikel);
   }
 
   updateContent(newContent) {
