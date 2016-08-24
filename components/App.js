@@ -16,7 +16,9 @@ export default class App extends React.Component {
       searchString:     '',
       filterEcological: false,
       filterKosher:     false,
-      filterEthical:    false
+      filterEthical:    false,
+      itemsPerPage:     100,
+      currentPage:      0
     };
   }
 
@@ -71,7 +73,22 @@ export default class App extends React.Component {
     }
   }
 
+  onClickPrev() {
+    this.setState({
+      currentPage: Math.max(0, this.state.currentPage - 1)
+    });
+  }
+
+  onClickNext() {
+    this.setState({
+      currentPage: Math.min(this.state.currentPage + 1, this.state.content.length / this.state.itemsPerPage)
+    });
+  }
+
   render() {
+    const startIdx = this.state.currentPage * this.state.itemsPerPage;
+    const endIdx   = startIdx + this.state.itemsPerPage;
+
     return (
       <div className="app">
         <div className="search">
@@ -83,9 +100,17 @@ export default class App extends React.Component {
           <span className="toggle"><input id="kosher" type="checkbox" onChange={this.onChangeCheckbox.bind(this)} />Endast Kosher</span>
           <span className="toggle"><input id="ethical" type="checkbox" onChange={this.onChangeCheckbox.bind(this)} />Endast Etiskt</span>
         </div>
+        <div>
+          <button onClick={this.onClickPrev.bind(this)}>Bakåt</button>
+          {this.state.currentPage + 1}
+          <button onClick={this.onClickNext.bind(this)}>Framåt</button>
+          Visar {startIdx + 1} - {endIdx} av {this.state.content.length}
+        </div>
         <Info entry={this.state.currentEntry} />
         <List
           content={this.state.content}
+          startIndex={startIdx}
+          endIndex={endIdx}
           filter={this.state.searchString}
           onSelect={this.onSelectListEntry.bind(this)}
           filterEcological={this.state.filterEcological}

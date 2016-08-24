@@ -8,7 +8,9 @@ export default class List extends React.Component {
   }
 
   shouldComponentUpdate(newProps) {
-    return this.props.content !== newProps.content ||
+    return this.props.startIndex !== newProps.startIndex ||
+           this.props.endIndex !== newProps.endIndex ||
+           this.props.content !== newProps.content ||
            this.props.filter !== newProps.filter ||
            this.props.filterEcological !== newProps.filterEcological ||
            this.props.filterKosher !== newProps.filterKosher ||
@@ -21,7 +23,7 @@ export default class List extends React.Component {
 
     const self = this;
 
-    const filtered = this.props.content.filter(entry => {
+    let filtered = this.props.content.filter(entry => {
       if (self.props.filterEcological && !entry.ecological) {
         return false;
       }
@@ -36,6 +38,8 @@ export default class List extends React.Component {
 
       return regex.test(entry.name);
     });
+
+    filtered = filtered.slice(this.props.startIndex, this.props.endIndex);
 
     return (
       <div className="list">
