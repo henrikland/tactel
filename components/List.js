@@ -1,10 +1,10 @@
 import '../vendor/react.js';
-import Entry from './Entry.js';
+import ListItem from './ListItem.js';
 import './List.css';
 
 export default class List extends React.Component {
-  onSelect(entry) {
-    this.props.onSelect(entry);
+  onSelect(article) {
+    this.props.onSelect(article);
   }
 
   shouldComponentUpdate(newProps) {
@@ -23,20 +23,20 @@ export default class List extends React.Component {
 
     const self = this;
 
-    let filtered = this.props.content.filter(entry => {
-      if (self.props.filterEcological && !entry.ecological) {
+    let filtered = this.props.content.filter(article => {
+      if (self.props.filterEcological && !article.ecological) {
         return false;
       }
 
-      if (self.props.filterKosher && !entry.kosher) {
+      if (self.props.filterKosher && !article.kosher) {
         return false;
       }
 
-      if (self.props.filterEthical && !entry.ethical) {
+      if (self.props.filterEthical && !article.ethical) {
         return false;
       }
 
-      return regex.test(entry.name);
+      return regex.test(article.name);
     });
 
     filtered = filtered.slice(this.props.startIndex, this.props.endIndex);
@@ -44,10 +44,10 @@ export default class List extends React.Component {
     return (
       <div className="list">
         {
-          filtered.map(entry =>
-            <Entry
-              key={entry.id}
-              data={entry}
+          filtered.map(article =>
+            <ListItem
+              key={article.id}
+              article={article}
               onSelect={this.onSelect.bind(this)}
             />
           )

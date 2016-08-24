@@ -1,9 +1,9 @@
-div.entry {
+div.list-item {
     border-left: 5px solid rgb(100, 100, 100);
     border-top: 1px solid rgb(100, 100, 100);
     cursor: pointer;
 }
 
-div.entry:hover {
+div.list-item:hover {
     background: rgb(230, 230, 230);
 }

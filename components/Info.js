@@ -3,35 +3,35 @@ import './Info.css';
 
 export default class Info extends React.Component {
   calculateApk() {
-    const entry = this.props.entry;
+    const article = this.props.article;
 
-    return (entry.price / ((entry.alcoholPercent / 100) * (entry.volumeMl / 10))).toFixed(2);
+    return (article.price / ((article.alcoholPercent / 100) * (article.volumeMl / 10))).toFixed(2);
   }
 
   shouldComponentUpdate(newProps) {
-    return this.props.entry !== newProps.entry;
+    return this.props.article !== newProps.article;
   }
 
   render() {
     return (
       <div className="info">
-        {this.props.entry &&
+        {this.props.article &&
           <div>
-            <div className="info-name">{this.props.entry.name}</div>
-            <div className="info-price">{this.props.entry.price} kr inklusive moms</div>
+            <div className="info-name">{this.props.article.name}</div>
+            <div className="info-price">{this.props.article.price} kr inklusive moms</div>
             <div className="info-apk">
               Alkohol per krona: {this.calculateApk()} kronor per centiliter ren sprit.
             </div>
             {
-              this.props.entry.ecological &&
+              this.props.article.ecological &&
               <img src="assets/leaf.jpg" title="Eco!"/>
             }
             {
-              this.props.entry.kosher &&
+              this.props.article.kosher &&
               <img src="assets/david.png" title="Kosher!"/>
             }
             {
-              this.props.entry.ethical &&
+              this.props.article.ethical &&
               <img src="assets/heart.png" title="Good!"/>
             }
           </div>

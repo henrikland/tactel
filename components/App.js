@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
     this.state = {
       content:          [],
-      currentEntry:     null,
+      currentArticle:   null,
       searchString:     '',
       filterEcological: false,
       filterKosher:     false,
@@ -44,9 +44,9 @@ export default class App extends React.Component {
     });
   }
 
-  onSelectListEntry(entry) {
+  onSelectListItem(article) {
     this.setState({
-      currentEntry: entry
+      currentArticle: article
     });
   }
 
@@ -106,13 +106,13 @@ export default class App extends React.Component {
           <button onClick={this.onClickNext.bind(this)}>Framåt</button>
           Visar {startIdx + 1} - {endIdx} av {this.state.content.length}
         </div>
-        <Info entry={this.state.currentEntry} />
+        <Info article={this.state.currentArticle} />
         <List
           content={this.state.content}
           startIndex={startIdx}
           endIndex={endIdx}
           filter={this.state.searchString}
-          onSelect={this.onSelectListEntry.bind(this)}
+          onSelect={this.onSelectListItem.bind(this)}
           filterEcological={this.state.filterEcological}
           filterKosher={this.state.filterKosher}
           filterEthical={this.state.filterEthical}
