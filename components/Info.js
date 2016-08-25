@@ -19,6 +19,8 @@ export default class Info extends React.Component {
           <div>
             <div className="info-name">{this.props.article.name}</div>
             <div className="info-price">{this.props.article.price} kr inklusive moms</div>
+            <div className="info-volume">{this.props.article.volumeMl / 10} cl</div>
+            <div className="info-alcohol">{this.props.article.alcoholPercent} volymprocent alkohol</div>
             <div className="info-apk">
               Alkohol per krona: {this.calculateApk()} centiliter ren sprit per krona.
             </div>
