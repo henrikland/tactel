@@ -1,6 +1,5 @@
 const config = {
-  URL: 'http://www.systembolaget.se/api/assortment/products/xml'
-  // URL: 'http://localhost:8080/system.xml'
+  URL: 'http://localhost:8080/systemetartiklar'
 }
 
 export default config;

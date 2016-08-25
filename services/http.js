@@ -1,5 +1,3 @@
-import {parseString} from 'xml2js';
-
 export default function request(url, method, callback) {
   let req = new XMLHttpRequest();
 
@@ -10,9 +8,7 @@ export default function request(url, method, callback) {
       case XMLHttpRequest.DONE:
         switch (parseInt(req.status)) {
           case 200:
-            parseString(req.response, function (err, result) {
-              callback(result);
-            });
+            callback(JSON.parse(req.response));
 
             break;
         }
