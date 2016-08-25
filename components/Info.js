@@ -5,7 +5,7 @@ export default class Info extends React.Component {
   calculateApk() {
     const article = this.props.article;
 
-    return (article.price / ((article.alcoholPercent / 100) * (article.volumeMl / 10))).toFixed(2);
+    return (((article.alcoholPercent / 100) * (article.volumeMl / 10)) / article.price).toFixed(2);
   }
 
   shouldComponentUpdate(newProps) {
@@ -20,7 +20,7 @@ export default class Info extends React.Component {
             <div className="info-name">{this.props.article.name}</div>
             <div className="info-price">{this.props.article.price} kr inklusive moms</div>
             <div className="info-apk">
-              Alkohol per krona: {this.calculateApk()} kronor per centiliter ren sprit.
+              Alkohol per krona: {this.calculateApk()} centiliter ren sprit per krona.
             </div>
             {
               this.props.article.ecological &&
